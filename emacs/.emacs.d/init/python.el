@@ -14,11 +14,11 @@
  )
 
 (add-hook 'python-mode-hook
- '(lambda ()
-	 ;;使用company-jedi作为自动补全后端
-	 (add-to-list 'company-backends 'company-jedi)
-	 (local-set-key (kbd "RET") 'newline-and-indent)
-	 (setq indent-tabs-mode nil)
-	 (setq tab-width 4)
-	 (setq python-indent 4)
-	 (setq python-indent-offset 4)))
+          '(lambda ()
+             ;;使用company-jedi作为自动补全后端
+             (add-to-list 'company-backends 'company-jedi)
+             (local-set-key (kbd "RET") 'newline-and-indent)
+             (setq indent-tabs-mode nil)
+             (setq tab-width 4)
+             (setq python-indent 4)
+             (setq python-indent-offset 4)))

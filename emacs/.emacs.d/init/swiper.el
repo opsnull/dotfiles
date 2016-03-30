@@ -6,6 +6,7 @@
 (setq ivy-count-format "(%d/%d) ")
 
 (global-set-key "\C-s" 'swiper)
+;安装counsel后自动load counsel相关函数
 (global-set-key (kbd "M-x") 'counsel-M-x)
 (global-set-key (kbd "C-x C-f") 'counsel-find-file)
 (global-set-key (kbd "<f1> f") 'counsel-describe-function)

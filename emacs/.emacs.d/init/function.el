@@ -1,4 +1,4 @@
-;指定的常用函数
+;常用函数
 (defun insert-time ()
   (interactive)
   (insert (format-time-string "%Y-%m-%d-%R")))

@@ -4,3 +4,6 @@
 ;gutter显示git diff状态
 (global-git-gutter-mode +1)
 (git-gutter:linum-setup)
+
+(require 'ivy)
+(setq magit-completing-read-function 'ivy-completing-read)

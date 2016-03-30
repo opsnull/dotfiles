@@ -24,6 +24,8 @@
 ;我的packages列表。
 (defvar geekard/packages
   '(company
+    company-quickhelp
+    company-c-headers
     jedi-core ;;依赖python package:epc和jedi;
     company-jedi ;;和jedi.el冲突；
     company-go
@@ -35,7 +37,6 @@
     go-autocomplete ;;依赖godef、gocode、goimports程序
     go-eldoc
     go-mode
-;    helm
     htmlize
     js2-mode
     json-mode
