@@ -1,0 +1,1 @@
+*/5 * * * * geekard /usr/bin/getmail --rcfile=getmailrc --rcfile=gmailrc --rcfile=baidurc &>/dev/null

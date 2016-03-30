@@ -1,0 +1,20 @@
+#! /bin/sh
+# UNINSTALL-daemontools
+# (C) 2002, 2008 by Matthias Andree
+#
+# For licensing conditions, see the file COPYING found at the top-level
+# directory of the leafnode-1 distribution tarball.
+#
+# Should your leafnode be configured for daemontools,
+# here's how to get rid of it:
+
+# switch to actual directory:
+cd /service/leafnode-1
+# and remove the symlink to it:
+rm /service/leafnode-1
+# wait until svscan has noticed the symlink is gone:
+sleep 6
+# now kill and terminate:
+svc -dx .
+# and cd back to prior working directory
+cd "$OLDPWD"

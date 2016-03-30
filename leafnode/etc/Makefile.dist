@@ -1,0 +1,4 @@
+# This file allows you to simply type "make" to rebuild
+# nntp.cdb, without remembering the complex command.
+nntp.cdb: nntp.rules
+	tcprules $@ nntp.tmp <nntp.rules

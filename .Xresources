@@ -1,0 +1,96 @@
+URxvt*loginShell:true
+URxvt*termName:screen-256color
+
+!透明
+URxvt*transparent:true
+!URxvt.shading: 0 to 99 darkens, 101 to 200 lightens
+URxvt*shading:50
+
+URxvt*background:Black
+URxvt*foreground:White
+URxvt.preeditType:Root
+
+!!输入法
+!!URxvt.inputMethod:fcitx
+
+!!颜色
+URxvt.colorBD:Gray95
+URxvt.colorUL:Green
+URxvt.color1:Red2
+URxvt.color4:RoyalBlue
+URxvt.color5:Magenta2
+URxvt.color8:Gray50
+URxvt.color10:Green2
+URxvt.color12:DodgerBlue
+URxvt.color14:Cyan2
+URxvt.color15:Gray95
+
+!Clickable and yankable URLs
+!需安装: urxvt-url-select插件
+URxvt.perl-ext-common:default,matcher,fullscreen,keyboard-select,url-select,\
+clipboard,vtwheel,-option-popup,-selection-popup,-realine
+!,tabbed
+
+!keyboard-select
+URxvt.keysym.M-Escape:perl:keyboard-select:activate
+URxvt.keysym.M-s:perl:keyboard-select:search
+
+!url-select
+URxvt.keysym.M-u:perl:url-select:select_next
+URxvt.underlineURLs:true
+URxvt.urlLauncher:firefox
+URxvt.matcher.button:1
+URxvt*matcher.pattern.0:\\b(?:(?:https?|ftp):\/\/|mailto:)[\\w\-\@;\/?:&=%\$_.+!*\x27(),~#]+ [\\w\-\@;\/?:&=%\$_+!*\x27()~]
+URxvt.matcher.pattern.1:\\b(mailto:)[\\w\-\@;\/?:&=%\$_.+!*\x27(),~#]+ [\\w\-\@;\/?:&=%\$_+!*\x27()~]
+URxvt.matcher.launcher.1:mutt $0
+URxvt.matcher.pattern.2:\\bhttps?:\/\/[\\w-.]*\/[\\w./?&@#-]*.(jpg|JPG|jpeg|JPEG|png|PNG|icon|gif|GIF|bmp|BMP)
+URxvt.matcher.launcher.2:feh $0
+
+!clipboard
+!先高亮选中要复制的内容，然后按M-c键，则该内容会复制到系统剪贴板中。
+!urxvt可以使用M-v键将系统剪贴板钟的内容复制到当前光标位置。
+!其它X程序可以直接使用C-v粘贴。
+URxvt.keysym.M-c:perl:clipboard:copy
+URxvt.keysym.M-v:perl:clipboard:paste
+URxvt.keysym.M-C-v:perl:clipboard:paste_escaped
+
+!tabbedex
+! URxvt.keysym.M-t: perl:tabbedex:new_tab
+! URxvt.keysym.M-n: perl:tabbedex:next_tab
+! URxvt.keysym.M-p: perl:tabbedex:prev_tab
+
+!滚动条
+URxvt.scrollBar:True
+URxvt.scrollBar_right:True
+URxvt.scrollBar_floating:False
+URxvt.scrollstyle:plain
+
+!滚屏
+URxvt.mouseWheelScrollPage:True
+URxvt.scrollTtyOutput:False
+URxvt.scrollWithBuffer:True
+URxvt.scrollTtyKeypress:True
+
+!光标
+URxvt.cursorBlink:True
+
+!边框
+URxvt.borderLess:False
+Rxvt.menu:/etc/X11/rxvt.menu
+
+!fullscreen: 需安装urxvt-fullscreen插件
+URxvt.keysym.F11:perl:fullscreen:switch
+
+!字体设置
+Xft.dpi:96
+urxvt.imLocale:zh_CN.utf8
+
+Rxvt.font:xft:Monaco:size=11:antialias=true,xft:MicroSoft YaHei-11
+Rxvt.boldFont:xft:Monaco:size=11:antialias=true,Bold,xft:Microsoft YaHei-11:Bold,xft
+
+!!URxvt.font:xft:Monaco:size=12:antialias=false,xft:DejaVu Sans Mono-12:antialias=false:charwidth=13:charheight=13
+!!URxvt.boldFont:xft:Monaco:pixelsize=12:antialias=false:Bold,xft:Liberation Mono:pixelsize=12:Bold:charwidth=13:charheight=13
+
+!URxvt.font:xft:monaco:size=11:antialias=true
+!URxvt.boldFont:xft:monaco:size=11:antialias=true
+URxvt.saveLines:65535

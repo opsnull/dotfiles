@@ -1,0 +1,3 @@
+MAILTO=""
+* 12 * * * * news /usr/bin/texpire
+*/5 * * * * news /usr/bin/fetchnews

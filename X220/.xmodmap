@@ -1,0 +1,10 @@
+!swithc alt and ctl
+!from: http://lins05.mysmth.net/2011/04/24/67/
+remove Mod1 = Alt_L 
+remove Control = Control_L
+keycode  37= Alt_L
+keycode 64  = Control_L
+!Right Alt maps to Esc
+!keycode 108 = Escape
+add Control = Control_L
+add Mod1 = Alt_L 

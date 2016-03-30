@@ -1,0 +1,1 @@
+(nyan-mode 1)

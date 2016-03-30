@@ -1,0 +1,21 @@
+MAILDIR=$HOME/Mail
+DEFAULT=$MAILDIR/Inbox/
+LOGFILE=$MAILDIR/procmail.log
+VERBOSE=on
+
+##菜谱行以:0开头
+##菜谱行中不可包含注释
+##使用否条件!禁止某菜谱
+##条件行以*开头，你的朋友作为正则表达式（regxp）
+##条件行并列，*之后所有部分将被送到egrep
+##执行行紧接条件行之后。这里是一个邮件箱的名称。
+
+#########  QQ  ##############################
+:0:
+* ^(From|To):.*(geekard|574419270)@qq.com.*
+$MAILDIR/QQ/
+
+######## Gmail ############################
+:0:
+* ^(From|To):.*geekard@gmail.com.*
+$MAILDIR/Gmail/

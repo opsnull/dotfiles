@@ -1,0 +1,227 @@
+#IMAP收信设置,由于这里使用getmail收信，因此不需要这些配置了。
+# set folder = imaps://imap.gmail.com/
+# set imap_user = geekard@gmail.com
+# set imap_pass = xxxx
+# set spoolfile = +INBOX
+# mailboxes = +INBOX
+# set header_cache = ~/.mutt/hcache
+# set postponed = +[Gmail]/Drafts
+# unset imap_passive
+# set imap_keepalive = 300
+# set mail_check = 120
+
+# POP3收信设置。
+#set pop_user = "xxx@mail.ustc.edu.cn"
+#set pop_pass = xxxxxx
+#set pop_host = 202.38.64.8
+
+##邮件编辑器
+set editor = "emacsclient -c"
+#set editor  = vim
+
+##email body类型, 设置为text/html可以发送html内容
+set content_type = text/html
+
+##邮件发送程序
+set sendmail = /usr/bin/msmtp
+
+###邮箱设置
+#邮箱格式
+set mbox_type = Maildir
+
+#邮箱位置
+set folder = $HOME/Mail
+
+#默认未读邮件位置
+set spoolfile = +Inbox
+
+#监视的邮箱位置(由procmail存放)，并随时报告新邮件。当按"c"切换信箱时，按TAB可选择它们。
+#注意mailboxes是mutt的命令，所以不用set来定义。
+#按照mutt manual的3.11节的说明，如果filename前有"shortcut characters, eg. = and !"
+#则它们会先被处理
+mailboxes =+Inbox  =+UESTC =+Baidu =+Gmail =+QQ
+
+
+#已读邮件保存位置
+set mbox = +archive
+#退出时是否提示把读过的信件从spoolfile移到mbox中
+set move = ask-yes
+
+#当有多个收件箱时(由mailboxes指定)，可以配置各收件箱里的邮件阅读后的保存位置
+#Usage: mobx-hook [!]pattern mailbox
+#mbox-hook Inbox +archive
+
+
+#草稿箱
+set postponed = +drafts
+
+#发件箱 
+#按月放到不同的文件夹中，注意：`date`前必须要有字符串。
+set record = +Sent/Sent-`date +%Y-%m`
+
+#查看未读邮件时间间隔
+set check_new = yes
+set mail_check = 10
+
+#退出时是否确认，及确认方式。
+set quit = ask-yes
+
+#当 Mutt 用 thread 方式显示时，是否用纯 ascii 表示树状列表。
+set ascii_chars = yes
+
+#回信时是否包含原文。
+set include = ask-yes
+#回信的引文之前插入那个符号？
+set indent_str="> "
+
+#gmail should not set envelope.
+#set envelope_from = yes
+set realname = "张俊"
+set use_from = yes
+set from = "geekard@gmail.com"
+
+#设置邮件头。
+my_hdr From: ZhangJun <geekard@gmail.com>
+my_hdr Reply-To: ZhangJun <geekard@gmail.com>
+
+#签名
+set signature="~/.signature"
+
+#如果设置，当你按 "r" 回信时，就不会再提示你输入回信地址和主题，直接进入编辑模式。
+set fast_reply
+
+#当你按 "t" 或者 "D" 之类的标记操作时，是否自动把光标移动到下一封信件。
+set resolve = yes
+
+#地址簿
+source ~/.mutt/mutt.alias
+
+#当你在 index 里按 "a" 为来信者取别名时，使用哪一个别名文件保存这个别名。
+set alias_file=$HOME/.mutt/mutt.alias
+
+#文件类型默认打开程序
+set mailcap_path = $HOME/.mailcap
+
+#自动预览的附件类型,更好地阅读html邮件。
+#we use `wvvare' to view word, `pdftotext' to view pdf, `feh' to
+#view image
+auto_view text/html application/msword application/pdf image/* \
+application/x-gunzip application/postscript application/x-tar-gz
+
+
+#打分
+#新信件+4分,主题包含“通知”的+2，主题包含 “Circulation” +3, 已经标记删除的 -5，上次没有读的 +1，包含 “believe”的 -10(垃圾广告！)。
+#新邮件
+score "~N" +2
+#主题包含
+score "~s 会议纪要" +1
+score "~s Library-Courtesy" +3
+#发送者
+score "~f xudu@gmail.com" +4
+score "~f liaodan@uestc.edu.cn" +4
+#删除
+score "~D" -5
+#未读
+score "~O" +1
+#可疑欺诈
+score "~s believe" -10
+#排序方式。
+set sort = threads
+#set sort = score
+#当用 thread 排序方式时，我们对各个 thread 的相对排序顺序。
+set sort_aux = date
+#Group
+group -group me -addr geekard@gmail.com geekard@qq.com zj12912@gmail.com
+
+
+#外部程序退出时，是否要求用户按一个键才返回。这在察看某些shell命令输出时是必要的，
+#否则它们一下就消失了。
+set wait_key = yes
+
+#当你要把信件存到另一个信箱，而这个信箱已经存在时，是否提示附加？
+set noconfirmappend
+
+#是否把邮件头也放在编辑器里可以修改？
+set edit_headers = yes
+
+#当你在用 pager 看信件时，在 index区留出多少行显示邮件列表？
+set pager_index_lines = 6
+
+#pagere不自动翻页.
+set pager_stop
+
+#告诉 Mutt 你已经订阅了那些邮件列表(mailing-list).告诉 Mutt 你已经订阅了那些邮件列表(mailing-list).
+#这有助于 Mutt 判断那些信件是邮件列表转过来的，避免你错误的回复到别人的私人信箱。也避免别人回复到你的私人信箱。
+subscribe kde-devel@kde.org
+
+#GPG配置文件
+#source $HOME/.mutt/gpg.rc
+
+#指定状态行形式，mutt-filter是一个自动提示的脚本。
+set status_format="mutt-filter '-%r-Mutt: %f [Msgs:%?M?%M/?%m%?n? New:%n?%?o? Old:%o?%?d? \
+sel:%d?%?F? Flag:%F?%?t? Tag:%t?%?p? Post:%p?%?b? Inc:%b?%?l? %l?]----%>-(%P)---'|"
+
+#终端字符编码
+set charset="UTF-8"
+#外发邮件使用的编码
+set send_charset="UTF-8"
+#mutt显示日期为中文
+set locale="zh_CN.UTF-8"
+#有些没有设置字符编码时,将默认编码设为中文
+charset-hook ^us-ascii$ gb2312
+#Chinaren 等服务器发出来的信件使用了 quoted-printable 的 subject，
+#而且设置编码为 "iso8859-1"，这显然是错误的。
+#对付这个错误的办法是把 iso-8859-1 变成 gb2312 的别名
+charset-hook ^iso-8859-1$ gb2312
+#evolution 发过来的 subject 为 utf-8 编码的邮件标题乱码！
+#那就把不是 utf-8 的编码都映射到 gb2312
+charset-hook !UTF-8 gb2312
+#解决中文附件名为乱码的问题
+set rfc2047_parameters=yes
+#解决未经过MIME编码的信件显示为乱码的问题
+set assumed_charset="gb2312"
+
+#打印命令，使用外部程序muttprint
+set print_command="/usr/bin/muttprint %s -p {PrinterName}"
+
+
+# 用快捷键G来调用getmial收取邮件
+macro index G "!getmail\n" "Invoke getmail"
+macro pager G "!getmail\n" "Invoke getmail"
+
+set status_format=" %r %b %f %n      Del %d      Msgs %m %l %> (%P)"
+set pager_format="%-10.10i %[!%a %b %d %R]"
+set date_format="!%H:%M %a %d %b     "
+set index_format="%4C %Z %[%b%d] %-15.15F %s"
+set folder_format="%2C %t %8s %d %N %f"
+
+# 显示邮件时默认除去的邮件头部字段列表
+# 忽略所有字段然后再选中您想看到的
+ignore *
+unignore  Date To From Cc Subject X-Mailer Organization User-Agent
+hdr_order Date From To Cc Subject X-Mailer User-Agent Organization
+
+# Color
+ color hdrdefault black        cyan
+ color quoted     red          white
+ color signature  brightblack  white
+ color indicator  brightwhite  magenta
+ color attachment black        green
+ color error      red          white
+ color message    blue         white
+ color search     brightwhite  magenta
+ color status     brightyellow blue
+ color tree       red          white
+ color normal     blue         white
+ color tilde      green        white
+ color bold       brightyellow white
+ color markers    red          white
+ color index  brightwhite    red ~N
+ color index  red    default ~O
+ color index  brightblack    default ~D
+ mono bold      bold
+ mono underline underline
+ mono indicator reverse
+
+#自定义命令
+

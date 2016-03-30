@@ -1,0 +1,19 @@
+#! /bin/sh
+# This shell script can be used to run leafnode from daemontools with
+# tcpd (tcp_wrappers or socket_wrappers) access control.
+#
+# It requires daemontools and tcpserver. See INSTALL.
+#
+# (C) 2002 by Matthias Andree
+#
+# To use it, create a directory env below the directory where you place
+# this file, rename this file to "run" and
+# create two files in env:
+# echo "7"   > env/MAXCONNECTIONS
+# echo "127.0.0.1"  > env/LISTENIP
+
+exec 2>&1
+set -e
+echo "starting leafnode tcpserver with tcpd (tcp_wrappers) access control"
+exec /command/envdir env /bin/sh -c \
+    'none -c$MAXCONNECTIONS -l0 -H -v -x nntp.cdb $LISTENIP 119 /command/setuidgid news "none" "none" "/usr/bin/leafnode"'

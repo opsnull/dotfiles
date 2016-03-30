@@ -1,0 +1,16 @@
+!将apple键盘的Super_L映射为Control_L， Super_LR映射为Alt_L，Alt_L映射为Super_L;
+!xterm不支持Meta键，所以重新映射后的Super_R对应的Alt_L功能失效，但urxvt支持Meta，故可以在
+!urxvt中使用emacs；
+!http://unix.stackexchange.com/questions/28993/what-is-bashs-meta-key
+clear Control
+clear Mod1
+clear Mod4
+
+!64: Alt_L, 133: Super_L, 134: Super_R
+keycode 33 = Super_L
+keycode 133 = Control_L
+keycode 134 = Alt_L
+
+add Control = Control_L
+add Mod1 = Alt_L
+add Mod4 = Super_L

@@ -1,0 +1,26 @@
+#! /bin/sh
+# This shell script can be used to run leafnode with tcpserver-native
+# access control (tcprules) from daemontools.
+#
+# It requires daemontools, tcpserver and tcprules (ucspi-tcp). See
+# INSTALL.
+#
+# (C) 2002 by Matthias Andree
+#
+# For automatic setup, use setup-daemontools.sh.
+#
+# To set it up manually, create a directory env below the directory
+# where you place this file, rename this file to "run" and create two
+# files in env:
+#
+# echo "7"   > env/MAXCONNECTIONS
+# echo "127.0.0.1"  > env/LISTENIP
+#
+# See README-daemontools for more information.
+
+exec 2>&1
+set -e
+echo "starting leafnode tcpserver with tcpserver-native access control"
+make -q nntp.cdb || make nntp.cdb
+exec /command/envdir env /bin/sh -c \
+    'none -c$MAXCONNECTIONS -l0 -H -v -x nntp.cdb $LISTENIP 119 /command/setuidgid news "/usr/bin/leafnode"'
