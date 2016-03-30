@@ -3,7 +3,6 @@
 (shell-command "go get github.com/nsf/gocode")
 (shell-command "go get github.com/rogpeppe/godef")
 
-(setenv "GOPATH" (expand-file-name "~/golang"))
 (require 'go-mode-autoloads)
 
 (defun my-go-mode-hook ()
@@ -14,12 +13,13 @@
   (local-set-key (kbd "C-c C-f") 'gofmt)
   (local-set-key (kbd "C-c C-r") 'go-remove-unused-imports)
   (local-set-key (kbd "M-.") 'godef-jump)) ;; jump back: M-*
-(add-hook 'go-mode-hook 'my-go-mode-hook)
 
-;gocode自动补全
-(require 'go-autocomplete)
-(require 'auto-complete-config)
-
-;go-eldoc文档
-(require 'go-eldoc)
-(add-hook 'go-mode-hook 'go-eldoc-setup)
+(add-hook 'go-mode-hook (lambda ()
+                          ;go-eldoc文档
+                          (require 'go-eldoc)
+                          (go-eldoc-setup)
+                          ;company-go自动补全
+                          (require 'company-go)
+                          (add-to-list 'company-backends 'company-go)
+                          (company-mode)
+                          (my-go-mode-hook)))

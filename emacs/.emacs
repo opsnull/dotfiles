@@ -23,18 +23,20 @@
 
 ;我的packages列表。
 (defvar geekard/packages
-  '(auto-complete
+  '(company
+    jedi-core ;;依赖python package:epc和jedi;
+    company-jedi ;;和jedi.el冲突；
+    company-go
     exec-path-from-shell
     expand-region
-    flx-ido
+    find-file-in-project
     flycheck
     git-gutter
     go-autocomplete ;;依赖godef、gocode、goimports程序
     go-eldoc
     go-mode
-    helm
+;    helm
     htmlize
-    jedi ;;依赖virtualenv、ipython程序
     js2-mode
     json-mode
     lua-mode
@@ -47,6 +49,8 @@
     rainbow-delimiters
     smartparens
     smex
+    counsel
+    swiper
     solarized-theme
     sr-speedbar
     tabbar
