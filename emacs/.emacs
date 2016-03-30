@@ -3,6 +3,7 @@
 (setq user-mail-address "zhangjun3@kingsoft.com")
 
 (setenv "PATH" (concat "~/golang/bin:/usr/local/bin:/opt/local/bin:/usr/bin:/bin" (getenv "PATH")))
+(setenv "GOPATH" (expand-file-name "~/golang"))
 
 ;配置全局socks代理，访问melpa.org时使用；
 (setq socks-noproxy '("localhost" "10.0.0.0/8" "172.0.0.0/8" "*cn"))
@@ -27,6 +28,7 @@
     expand-region
     flx-ido
     flycheck
+    git-gutter
     go-autocomplete ;;依赖godef、gocode、goimports程序
     go-eldoc
     go-mode
