@@ -19,7 +19,7 @@
 (display-time-mode t)
 
 ;;在左侧显示行号
-(global-linum-mode 0)
+(global-linum-mode 1)
 (setq indicate-buffer-boundaries (quote left))
 
 ;;在状态栏显示文件大小

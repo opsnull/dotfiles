@@ -2,6 +2,7 @@
 (require 'magit)
 
 ;gutter显示git diff状态
+(require 'git-gutter)
 (global-git-gutter-mode +1)
 (git-gutter:linum-setup)
 

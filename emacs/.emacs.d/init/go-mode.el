@@ -22,4 +22,7 @@
                           (require 'company-go)
                           (add-to-list 'company-backends 'company-go)
                           (company-mode)
+                          ;启用ggtags mode
+                          (require 'ggtags)
+                          (ggtags-mode 1)
                           (my-go-mode-hook)))
