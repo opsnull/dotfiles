@@ -37,7 +37,7 @@
     go-autocomplete ;;依赖godef、gocode、goimports程序
     go-eldoc
     go-mode
-    ggtags
+    ggtags ;;依赖universal-ctags, ggtags命令
     htmlize
     js2-mode
     json-mode
